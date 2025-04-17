@@ -1,0 +1,15 @@
+{
+  "name": "basic_node_js_project_template",
+  "version": "1.0.0",
+  "description": "a basic starter for node js project",
+  "main": "index.js",
+  "author": "Akshay Sadotra",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "http-status-codes": "^2.3.0",
+    "nodemon": "^3.1.9",
+    "winston": "^3.17.0"
+  }
+}
