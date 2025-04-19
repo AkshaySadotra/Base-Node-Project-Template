@@ -1,6 +1,7 @@
-`src`-> inside the src folder all the actual source code regarding the project will reside, this will not include any type of tests.(you might need to make a separate folder for the tests)
+This is a base node js template project. Feel free to change anything.
+- `src`-> inside the src folder all the actual source code regarding the project will reside, this will not include any type of tests.(you might need to make a separate folder for the tests)
 
-let's take a look inside the src folder ->
+let's take a look inside the `src` folder ->
 
 - `config` - In this folder anything and everything regarding any configuration or set up of library or module will be done. For example : setting up `dotenv` so that we can use environment variables anywhere in a cleaner fashion, this is done in `server-config.js`. One more example of that is setting up logging library for creating meaningful logs
 
