@@ -1,11 +1,13 @@
-const {Logger} = require('../config')
+// const {Logger} = require('../config');
+const{StatusCodes} = require('http-status-codes')
+const AppError = require('../utils/error/app-error');
 class CrudRepository{
     constructor(model){
         this.model = model; // stores the incoming model in model variable
     }
 
     async create(data){
-     const response  = this.model.create(data);
+     const response  =await this.model.create(data);
      return response;
     }
 
@@ -13,7 +15,7 @@ class CrudRepository{
 
     async destroy(data){
         
-        const response  = this.model.destroy({
+        const response  = await this.model.destroy({
                 where:{
                     id: data
                 }
@@ -24,21 +26,27 @@ class CrudRepository{
 
     async get(data){
         
-        const response  = this.model.findByPk(data);
+        const response  = await this.model.findByPk(data);
+       
+        if(!response){
+           
+            throw new AppError("Not able to find the resource",StatusCodes.NOT_FOUND);
+
+        }
         return response;
         
     }
 
     async getAll(){
        
-        const response  = this.model.findAll();
+        const response  =await this.model.findAll();
         return response;
        
     }
 
     async update(id,data){
         
-        const response  = this.model.update(data, {
+        const response  =await this.model.update(data, {
                 where:{
                     id:id
                 }
