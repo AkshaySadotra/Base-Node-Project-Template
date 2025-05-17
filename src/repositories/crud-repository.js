@@ -1,6 +1,7 @@
 // const {Logger} = require('../config');
 const{StatusCodes} = require('http-status-codes')
 const AppError = require('../utils/error/app-error');
+const { response } = require('express');
 class CrudRepository{
     constructor(model){
         this.model = model; // stores the incoming model in model variable
@@ -19,7 +20,13 @@ class CrudRepository{
                 where:{
                     id: data
                 }
-            });
+                
+            }
+        );
+        if(!response){
+            throw new AppError("Not able to find the resource", StatusCodes.NOT_FOUND)
+        }
+
         return response;
        
     }
