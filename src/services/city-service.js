@@ -25,13 +25,31 @@ async function deleteCity(id){
         return city
     } catch (error) {
         if(error.statusCode == StatusCodes.NOT_FOUND){
-            throw new AppError("The city you are requested to delete is not found", error.statusCode);
+            throw new AppError('The city you requested to delete is not found', error.statusCode);
         }
-        throw new AppError("Cannot delete the data", StatusCodes.INTERNAL_SERVER_ERROR)
+        throw new AppError('Cannot delete the data', StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+}
+async function updateCity(id, data) {
+    try {
+        const city = await cityRepository.update(id, data);
+        return city;
+    } catch (error) {
+        // console.log(error);
+        if(error.name =='SequelizeUniqueConstraintError'){
+            throw new AppError("The City is already present", StatusCodes.BAD_REQUEST)
+        }
+        if(error.statusCode == StatusCodes.NOT_FOUND){
+            
+            throw new AppError('The city you requested to update is not found', error.statusCode);
+        }
+        throw new AppError('Cannot update the data', StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
 
+
 module.exports={
     createCity,
-    deleteCity
+    deleteCity,
+    updateCity
 }

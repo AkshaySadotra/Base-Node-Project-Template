@@ -58,7 +58,7 @@ class CrudRepository{
                     id:id
                 }
             });
-            if(response == 0){
+            if(response==0){
                 throw new AppError("Not able to find the requested resource", StatusCodes.NOT_FOUND)
             }
         return response;
