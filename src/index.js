@@ -19,11 +19,11 @@ app.listen(ServerConfig.PORT, async ()=>{
 
     // const bomAirport =await bombay.createAirport({name:'Shirdi International Airport', code:'SAG'});
     // console.log(bomAirport);
-    const city = await City.findByPk(2);
+//     const city = await City.findByPk(2);
 
-    await city.destroy({
-        where:{
-            id:2
-        }
-    })
+//     await city.destroy({
+//         where:{
+//             id:2
+//         }
+//     })
 })
