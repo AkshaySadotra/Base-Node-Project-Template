@@ -10,7 +10,9 @@ router.post('/',
             );
 
  ///api/v1/flights?trips=MUM-DEL : get request
-router.get('/', FlightController.getAllFlights)            
+router.get('/', FlightController.getAllFlights) 
+// /api/v1/flights/:id get
+router.get('/:id', FlightController.getFlight) 
 module.exports = router;
 
  
