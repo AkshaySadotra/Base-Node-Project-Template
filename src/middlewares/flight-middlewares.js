@@ -62,9 +62,21 @@ function validateCreateRequest(req, res, next){
     next();
                       
 }
+function validateUpdateSeats(req, res, next){
+   
+    if(!req.body.seats) {
+        ErrorResponse.message = "something went wrong while updating a flight"; 
+        ErrorResponse.error= new AppError(['Seats not found in the incoming request in the correct form'],StatusCodes.BAD_REQUEST)
+        return res
+                   .status(StatusCodes.BAD_REQUEST)
+                   .json(ErrorResponse);   
+    }
+    next();
+}
 
 // calling the next middleware if it is in correct format
 // and who will be the next middleware, airplane controller will be the next middleware
 module.exports = {
-    validateCreateRequest
+    validateCreateRequest,
+    validateUpdateSeats
 }
